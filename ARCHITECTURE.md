@@ -88,3 +88,17 @@ The backend exposes a versioned REST API under `/api/v1`.
 | `/substations` | Substation information |
 | `/outages` | Scheduled outage management |
 | `/health` | Health check for deployment |
+
+## Localization Engine
+
+The localization engine is implemented as an independent service.
+
+Responsibilities:
+
+- Receive telemetry
+- Update latest device state
+- Traverse the electrical graph
+- Identify the live/dark boundary
+- Group affected poles into one incident
+- Produce a confidence score
+- Return a localization result
