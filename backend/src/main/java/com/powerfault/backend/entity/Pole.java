@@ -3,9 +3,13 @@
 //public class Pole {
 //}
 
-
 package com.powerfault.backend.entity;
-
+import jakarta.persistence.OneToOne;
+import java.util.ArrayList;
+import java.util.List;
+import com.powerfault.backend.entity.Device;
+import com.powerfault.backend.entity.NetworkConnection;
+import com.powerfault.backend.entity.Transformer;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -47,6 +51,23 @@ public class Pole {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "transformer_id", nullable = false)
     private Transformer transformer;
+
+    @OneToOne(
+            mappedBy = "pole",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true,
+            fetch = FetchType.LAZY
+    )
+//    private Device device;
+
+    @OneToMany(mappedBy = "fromPole", cascade = CascadeType.ALL)
+    @Builder.Default
+    private List<NetworkConnection> outgoingConnections = new ArrayList<>();
+
+    @OneToMany(mappedBy = "toPole", cascade = CascadeType.ALL)
+    @Builder.Default
+    private List<NetworkConnection> incomingConnections = new ArrayList<>();
+
 
     @OneToOne(
             mappedBy = "pole",

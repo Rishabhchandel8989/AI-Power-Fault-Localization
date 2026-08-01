@@ -43,3 +43,9 @@ The pole is the fundamental unit used by the localization engine.
 Each pole belongs to one transformer and may optionally have an IoT device. Approximately 9% of poles intentionally have no device to reflect the assignment's synthetic data requirements.
 
 Pole ordering is represented by the `sequenceNumber` field. When the ordering is unavailable, the field remains `null`, allowing the localization engine to distinguish between known topology and inferred topology.
+
+## Device Layer
+
+IoT devices are installed on poles and act as the source of telemetry data. A pole may not have a device, matching the assignment requirement that approximately 9% of poles are unequipped.
+
+Each device maintains its operational status and last heartbeat (`lastSeen`), enabling the simulator and monitoring dashboard to detect offline devices.
