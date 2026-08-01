@@ -52,12 +52,12 @@ public class Pole {
     @JoinColumn(name = "transformer_id", nullable = false)
     private Transformer transformer;
 
-    @OneToOne(
-            mappedBy = "pole",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true,
-            fetch = FetchType.LAZY
-    )
+//    @OneToOne(
+//            mappedBy = "pole",
+//            cascade = CascadeType.ALL,
+//            orphanRemoval = true,
+//            fetch = FetchType.LAZY
+//    )
 //    private Device device;
 
     @OneToMany(mappedBy = "fromPole", cascade = CascadeType.ALL)

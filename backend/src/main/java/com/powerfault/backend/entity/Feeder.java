@@ -37,4 +37,8 @@ public class Feeder {
             cascade = CascadeType.ALL,
             orphanRemoval = true)
     private List<Transformer> transformers = new ArrayList<>();
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "substation_id", nullable = false)
+    private Substation substation;
 }
