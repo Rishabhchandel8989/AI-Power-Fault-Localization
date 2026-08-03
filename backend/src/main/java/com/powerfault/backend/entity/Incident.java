@@ -81,4 +81,11 @@ public class Incident {
     private LocalDateTime verifiedAt;
 
     private LocalDateTime closedAt;
+
+    @PrePersist
+    public void prePersist() {
+
+        detectedAt = LocalDateTime.now();
+
+    }
 }

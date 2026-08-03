@@ -76,4 +76,11 @@ public class Pole {
             fetch = FetchType.LAZY
     )
     private Device device;
+
+//    public String getPincode() {
+//    }
+@Column(nullable = false)
+private String ward;
+    private String pincode;
+    private String parentPoleCode;
 }

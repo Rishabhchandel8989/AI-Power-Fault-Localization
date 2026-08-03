@@ -25,4 +25,7 @@ public class LocalizationResult {
 
     private String reasoning;
 
+    private boolean faultDetected;
+
+
 }

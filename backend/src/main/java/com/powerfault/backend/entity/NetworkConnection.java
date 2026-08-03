@@ -1,7 +1,5 @@
 package com.powerfault.backend.entity;
-//
-//public class NetworkConnection {
-//}
+
 
 import com.powerfault.backend.entity.Pole;
 import jakarta.persistence.*;

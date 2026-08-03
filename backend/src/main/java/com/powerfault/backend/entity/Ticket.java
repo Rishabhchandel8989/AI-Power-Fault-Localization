@@ -38,4 +38,14 @@ public class Ticket {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "incident_id", nullable = false)
     private Incident incident;
+
+
+    @PrePersist
+    public void prePersist() {
+
+        createdAt = LocalDateTime.now();
+
+    }
+
+
 }

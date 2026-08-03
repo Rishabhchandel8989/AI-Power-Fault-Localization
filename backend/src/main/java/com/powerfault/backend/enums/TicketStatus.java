@@ -9,5 +9,11 @@ public enum TicketStatus {
     IN_PROGRESS,
     VERIFIED,
     RESOLVED,
-    CLOSED
+    CLOSED,
+
+    DETECTED,
+
+    ACKNOWLEDGED,
+
+    CREW_ASSIGNED
 }
