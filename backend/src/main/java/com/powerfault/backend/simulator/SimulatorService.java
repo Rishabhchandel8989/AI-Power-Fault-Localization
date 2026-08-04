@@ -1,37 +1,20 @@
-//
-//
-//package com.powerfault.backend.simulator;
-//
-//import com.powerfault.backend.simulator.dto.SimulatorRequest;
-//
-//public interface SimulatorService {
-//
-//    void simulateSpanFault(String poleCode);
-//
-//    void simulateTransformerFault(String transformerCode);
-//
-//    void simulateFeederFault(String feederCode);
-//
-//    void simulateDeviceFailure(String deviceId);
-//
-//    void repairFault(String poleCode);
-//
-//    void simulate(SimulatorRequest request);
-//
-//
-//}
-
 package com.powerfault.backend.simulator;
+
+import java.util.Map;
 
 public interface SimulatorService {
 
-    void simulateSpanFault(String poleCode);
+    Map<String, Object> simulateSpanFault(String poleCode);
 
-    void simulateTransformerFault(String transformerCode);
+    Map<String, Object> simulateTransformerFault(String transformerCode);
 
-    void simulateFeederFault(String feederCode);
+    Map<String, Object> simulateFeederFault(String feederCode);
 
-    void simulateDeviceFailure(String deviceId);
+    Map<String, Object> simulateDeviceFailure(String poleCode);
 
-    void repairFault(String poleCode);
+    Map<String, Object> simulateScheduledOutage(String scope, String targetId, String reason);
+
+    Map<String, Object> repairFault(String poleCode);
+
+    Map<String, Object> resetNetwork();
 }
