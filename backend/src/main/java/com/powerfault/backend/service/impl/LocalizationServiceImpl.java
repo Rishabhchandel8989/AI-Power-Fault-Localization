@@ -162,10 +162,10 @@ public class LocalizationServiceImpl implements LocalizationService {
         for (ScheduledOutage outage : outages) {
             if (outage.getStartTime() != null && outage.getEndTime() != null) {
                 if (!now.isBefore(outage.getStartTime()) && !now.isAfter(outage.getEndTime().plusMinutes(40))) { // handle 40 min overrun
-                    if ("feeder".equalsIgnoreCase(String.valueOf(outage.getScope())) && feeder.getFeederCode().equalsIgnoreCase(outage.getTargetId())) {
+                    if (outage.getScope() == OutageScope.FEEDER && feeder.getFeederCode().equalsIgnoreCase(outage.getTargetId())) {
                         return true;
                     }
-                    if ("dt".equalsIgnoreCase(String.valueOf(outage.getScope())) && transformer.getTransformerCode().equalsIgnoreCase(outage.getTargetId())) {
+                    if (outage.getScope() == OutageScope.TRANSFORMER && transformer.getTransformerCode().equalsIgnoreCase(outage.getTargetId())) {
                         return true;
                     }
                 }
