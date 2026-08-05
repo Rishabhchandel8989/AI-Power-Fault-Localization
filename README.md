@@ -50,7 +50,7 @@ Access the application in your browser:
 
 ## 🌐 Public Demo & Video
 
-- **Public URL:** [https://power-fault-localization.render.com](https://power-fault-localization.render.com) *(or your deployed public URL)*
+- **Public URL:** [https://ai-power-fault-localization.vercel.app](https://ai-power-fault-localization.vercel.app)
 - **5-Minute Walkthrough Video:** [Demo Video Link](https://www.youtube.com/watch?v=demo-kspdb)
 
 ---
