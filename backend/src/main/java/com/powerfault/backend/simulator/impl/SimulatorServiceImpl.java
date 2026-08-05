@@ -257,9 +257,9 @@ public class SimulatorServiceImpl implements SimulatorService {
             }
         }
 
-        ticketRepository.deleteAll();
-        incidentRepository.deleteAll();
-        scheduledOutageRepository.deleteAll();
+        ticketRepository.deleteAllInBatch();
+        incidentRepository.deleteAllInBatch();
+        scheduledOutageRepository.deleteAllInBatch();
 
         Map<String, Object> resp = new HashMap<>();
         resp.put("status", "SUCCESS");
