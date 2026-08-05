@@ -1,12 +1,15 @@
 import React from 'react';
 import { MapContainer, TileLayer, CircleMarker, Polyline, Popup } from 'react-leaflet';
 
-export default function NetworkMap({ poles, tickets, onSelectPole }) {
+export default function NetworkMap({ poles = [], tickets = [], onSelectPole }) {
   const center = [12.9675, 77.5925];
+
+  const safePoles = Array.isArray(poles) ? poles : [];
+  const safeTickets = Array.isArray(tickets) ? tickets : [];
 
   // Group poles by DT for polyline connections
   const dtGroups = {};
-  poles.forEach(p => {
+  safePoles.forEach(p => {
     if (!dtGroups[p.transformerCode]) {
       dtGroups[p.transformerCode] = [];
     }
@@ -15,9 +18,9 @@ export default function NetworkMap({ poles, tickets, onSelectPole }) {
 
   // Calculate connections between parent & child poles
   const lines = [];
-  poles.forEach(pole => {
+  safePoles.forEach(pole => {
     if (pole.parentPoleCode) {
-      const parent = poles.find(p => p.poleCode === pole.parentPoleCode);
+      const parent = safePoles.find(p => p.poleCode === pole.parentPoleCode);
       if (parent) {
         const isBroken = !pole.energized && parent.energized;
         lines.push({
@@ -57,7 +60,7 @@ export default function NetworkMap({ poles, tickets, onSelectPole }) {
         ))}
 
         {/* Pole Markers */}
-        {poles.map(pole => {
+        {safePoles.map(pole => {
           let fillColor = '#10b981'; // Green (Energized)
           if (!pole.hasDevice) {
             fillColor = '#64748b'; // Slate (No Device)

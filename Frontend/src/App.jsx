@@ -21,8 +21,8 @@ export default function App() {
         axios.get('/api/v1/tickets')
       ]);
       setMetrics(mRes.data);
-      setPoles(pRes.data);
-      setTickets(tRes.data);
+      setPoles(Array.isArray(pRes.data) ? pRes.data : []);
+      setTickets(Array.isArray(tRes.data) ? tRes.data : []);
     } catch (err) {
       console.error('Failed to fetch dashboard data:', err);
     }

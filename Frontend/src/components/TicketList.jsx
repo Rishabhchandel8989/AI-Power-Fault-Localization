@@ -1,7 +1,9 @@
 import React from 'react';
 import { AlertCircle, CheckCircle2, Clock, MapPin, Sparkles, UserCheck, Wrench, ShieldAlert } from 'lucide-react';
 
-export default function TicketList({ tickets, onUpdateStatus, onOpenAiBrief, actionError }) {
+export default function TicketList({ tickets = [], onUpdateStatus, onOpenAiBrief, actionError }) {
+  const safeTickets = Array.isArray(tickets) ? tickets : [];
+
   const getStatusBadge = (status) => {
     switch (status) {
       case 'DETECTED':
@@ -30,7 +32,7 @@ export default function TicketList({ tickets, onUpdateStatus, onOpenAiBrief, act
           <p className="text-xs text-slate-400">Live ticket lifecycle & telemetry verification</p>
         </div>
         <span className="bg-slate-800 text-slate-300 text-xs font-mono px-2.5 py-1 rounded-md border border-slate-700">
-          {tickets.length} Incidents
+          {safeTickets.length} Incidents
         </span>
       </div>
 
@@ -47,14 +49,14 @@ export default function TicketList({ tickets, onUpdateStatus, onOpenAiBrief, act
 
       {/* Ticket Cards Feed */}
       <div className="flex-1 overflow-y-auto space-y-3.5 pr-1">
-        {tickets.length === 0 ? (
+        {safeTickets.length === 0 ? (
           <div className="h-full flex flex-col items-center justify-center text-center py-12 text-slate-500">
             <CheckCircle2 className="w-12 h-12 text-emerald-500/40 mb-3" />
             <div className="font-semibold text-slate-300 text-sm">All Power Lines Energized</div>
             <div className="text-xs text-slate-500 mt-1 max-w-xs">No active faults detected across South Division LT network.</div>
           </div>
         ) : (
-          tickets.map(ticket => {
+          safeTickets.map(ticket => {
             const inc = ticket.incident || {};
             const confidence = inc.confidence ?? 85.0;
 
